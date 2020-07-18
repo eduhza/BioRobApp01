@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FirstBioRobApp.Controls.FlyoutHeader"
+             HeightRequest="112">
+
+    <ContentView.Content>
+        <Grid BackgroundColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+
+            <Image Source="BioRobHeaderImage.jpg" 
+                   Grid.Column="0"
+                   Grid.ColumnSpan="5"
+                   Grid.RowSpan="4"
+                   Aspect="Fill"
+                   Opacity="0.6"/>
+
+            <Image Source="curvatio_logo_nobg"
+                   Grid.Row="1"
+                   Grid.Column="1" />
+
+            <Label Text="BioRob"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="5"
+                   Grid.Row="1"
+                   FontSize="Body"
+                   TextColor="White"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" 
+                   ScaleX="3" 
+                   ScaleY="3"  
+                   FontAttributes="Bold"
+                   Opacity="0.6"/>
+            
+        </Grid>
+    </ContentView.Content>
+    
+    <!--<Grid BackgroundColor="Black" HorizontalOptions="FillAndExpand">
+        
+        
+    </Grid>-->
+</ContentView>

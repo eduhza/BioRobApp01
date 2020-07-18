@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FirstBioRobApp.Views.ContactPage"
+             xmlns:viewmodel="clr-namespace:FirstBioRobApp.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <viewmodel:ContactPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.25*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+
+            <Grid BackgroundColor="AliceBlue">
+                <Label Text="BioRob Tecnologia" 
+                       Grid.Row="0"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand" 
+                       FontSize="Title"
+                   />
+            </Grid>
+            <StackLayout Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label Text="Eduardo Arruda:" FontSize="Title"/>
+                <Label Text="        (48) 99671-0110" FontSize="Body"/>
+                <Label Text="        eduhza@gmail.com" FontSize="Subtitle"/>
+                <Label Text=""/>
+                <Label Text="Paulo Miyoshi:" FontSize="Title"/>
+                <Label Text="        (11) 98228-1841" FontSize="Body"/>
+                <Label Text="        paulo.pecegueiro@gmail.com" FontSize="Subtitle"/>
+                <Label Text=""/>
+                <Label Text="Helio Roesler:" FontSize="Title"/>
+                <Label Text="        (48) 99970-1732" FontSize="Body"/>
+                <Label Text="        helio.roesler@udesc.br" FontSize="Subtitle"/>
+
+            </StackLayout>
+            <Label Text="© 2020" 
+                   Grid.Row="2"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Title"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

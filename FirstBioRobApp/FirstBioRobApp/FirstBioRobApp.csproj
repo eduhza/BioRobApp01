@@ -1,0 +1,111 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Resources\NewFolder\**" />
+    <EmbeddedResource Remove="Resources\NewFolder\**" />
+    <None Remove="Resources\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="MainPage.xaml.cs" />
+    <Compile Remove="Models\CovidByCountry.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="MainPage.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\rawData.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\rawData.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Plugin.BLE" Version="2.2.0-pre2" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.2.8" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.2.0.44" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.2.0.44" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="18.2.0.44" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1080" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="AppShell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\FlyoutHeader.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AboutUsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\BluetoothPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\BluetoothPageOld.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ConfigurationPageOld.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ContactPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ContactPageOld.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AboutUsPageOld.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PlotPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PlotPageOld.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProductsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProdutosPageOld.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\BluetoothPageOld.xaml.cs">
+      <DependentUpon>BluetoothPageOld.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ConfigurationPageOld.xaml.cs">
+      <DependentUpon>ConfigurationPageOld.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ContactPageOld.xaml.cs">
+      <DependentUpon>ContactPageOld.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AboutUsPageOld.xaml.cs">
+      <DependentUpon>AboutUsPageOld.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlotPageOld.xaml.cs">
+      <DependentUpon>PlotPageOld.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ProdutosPageOld.xaml.cs">
+      <DependentUpon>ProdutosPageOld.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

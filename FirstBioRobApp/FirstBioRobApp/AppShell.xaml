@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:FirstBioRobApp"
+             xmlns:views="clr-namespace:FirstBioRobApp.Views"
+             xmlns:controls="clr-namespace:FirstBioRobApp.Controls"
+             mc:Ignorable="d"
+             x:Class="FirstBioRobApp.AppShell"
+             x:Name="MainPageMenu"
+             FlyoutIcon="curvatio_logo_nobg"
+             FlyoutBackgroundImage=""
+             FlyoutBackgroundImageAspect="AspectFill" 
+             FlyoutBehavior="Flyout"
+             BackgroundColor="#213347" >
+    <!-- FlyoutIcon="" is where we change the menu icon (default is hamburguer) -->
+    
+    
+    <!-- This is where we define our flyout header-->
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader/>
+    </Shell.FlyoutHeader>
+    
+    
+
+    <FlyoutItem Title="MainMenu"
+                Shell.TabBarIsVisible="True"
+                Shell.TabBarTitleColor="White"
+                Shell.TabBarUnselectedColor="#3C5F7F"
+                FlyoutDisplayOptions="AsMultipleItems">
+
+        <Tab Title="About Us"
+             Icon="ic_action_biorob.png">
+
+            <ShellContent Title="About us"
+                      Icon="ic_action_info.png" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:AboutUsPage}"/>
+
+            <ShellContent Title="Contact" 
+                          Icon="ic_action_email.png" 
+                          IsTabStop="True" 
+                          ContentTemplate="{DataTemplate views:ContactPage}"/>
+
+            <ShellContent Title="Produtos" 
+                          Icon="ic_action_email.png" 
+                          IsTabStop="True" 
+                          ContentTemplate="{DataTemplate views:ProductsPage}"/>
+        </Tab>
+
+        <ShellContent Title="Configuration" 
+                      Icon="ic_action_settings.png" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:ConfigurationPage}"/>
+        <ShellContent Title="Connect" 
+                      Icon="ic_action_bluetooth.png" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:BluetoothPage}"/>
+        <ShellContent Title="Plot Data" 
+                      Icon="ic_action_show_chart.png" 
+                      IsTabStop="True" 
+                      ContentTemplate="{DataTemplate views:PlotPage}"/>
+    </FlyoutItem>
+
+    <MenuItem Text="Site" 
+              Icon="ic_action_http.png" 
+              BindingContext="{x:Reference MainPageMenu}" 
+              Command="{Binding OpenURL}"
+              CommandParameter="http://biorob.com.br/" />
+    <!-- That BindingContext was the only way I got this to work-->
+
+
+</Shell>

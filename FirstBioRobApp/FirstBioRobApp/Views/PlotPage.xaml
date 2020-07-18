@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             mc:Ignorable="d"
+             x:Class="FirstBioRobApp.Views.PlotPage"
+             xmlns:viewmodel="clr-namespace:FirstBioRobApp.ViewModels"
+             Title="{Binding Title}"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             >
+
+    <ContentPage.Content>
+
+        <StackLayout Spacing="10" BackgroundColor="#EEEEEE" Padding="5,10" >
+
+            <chart:SfChart x:Name="SfChart1"
+                           VerticalOptions="FillAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           Series="{Binding SeriesCollection}">
+
+                <chart:SfChart.PrimaryAxis>
+                    <chart:NumericalAxis x:Name="primaryAxis" 
+                                     ShowMajorGridLines="False" 
+                                     ShowTrackballInfo="False"/>
+                </chart:SfChart.PrimaryAxis>
+
+                <chart:SfChart.SecondaryAxis>
+                    <chart:NumericalAxis x:Name="secondaryAxis" 
+                                     ShowMajorGridLines="False" 
+                                     ShowTrackballInfo="False"/>
+                </chart:SfChart.SecondaryAxis>
+            </chart:SfChart>
+
+            <buttons:SfButton x:Name="ChangeData_SfButton" 
+                              HeightRequest="80"
+                              CornerRadius="20" WidthRequest="10"
+                              Command="{Binding ChangeData_Clicked}" 
+                              IsEnabled="{Binding IsSfButton_Enabled}"
+                              BackgroundColor="{Binding SfButtonBackgroundColor}">
+                
+                <buttons:SfButton.Content>
+                    <StackLayout Orientation="Horizontal">
+
+                        <busyindicator:SfBusyIndicator x:Name="ChangeData_SfBusyIndicator" 
+                                                       AnimationType="ECG" 
+                                                       ViewBoxHeight="40"
+                                                       ViewBoxWidth="40"
+                                                       WidthRequest="80"
+                                                       IsBusy="True" 
+                                                       IsVisible="True"
+                                                       BackgroundColor="{Binding SfButtonBackgroundColor}"
+                                                       TextColor="White" 
+                                                       EnableAnimation="{Binding GraphUpdateServiceRunning}" />
+
+
+                        <Label x:Name="ChangeData_SfLabel" 
+                               Text="{Binding ChangeData_SfLabel}"
+                               FontSize="22" 
+                               FontAttributes="Bold"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               TextColor="White" />
+                        
+                    </StackLayout>
+                </buttons:SfButton.Content>
+            </buttons:SfButton>
+            
+            <Label x:Name="MeanLabel" 
+                   Text="{Binding Mean_Label}" 
+                   FontSize="Header" 
+                   HorizontalTextAlignment="Center" />
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+
+</ContentPage>
