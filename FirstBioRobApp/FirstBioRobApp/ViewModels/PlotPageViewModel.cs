@@ -31,26 +31,9 @@ namespace FirstBioRobApp.ViewModels
             GraphUpdateServiceRunning = false;
             SfButtonBackgroundColor = "#213347";
 
-
             DataStreaming_thread = new Thread(new ThreadStart(DataStreamingService));
             DataStreaming_thread.Priority = ThreadPriority.Highest;
             DataStreaming_thread.Start();
-
-            //Task.Run(()=> { Update_Graph_Series(); });
-            //Device.StartTimer(TimeSpan.FromMilliseconds(20), () =>
-            //{
-            //    Update_Graph_Series();
-            //    return true; // True = Repeat again, False = Stop the timer
-            //});
-
-            //DataStreamingService();
-
-            ////STREAMING SERVICE WILL BE ALWAYS ON (every 25milliseconds), BUT WILL ONLY UPDATE BUFFER WHEN FLAG IS ON
-            //Device.StartTimer(TimeSpan.FromMilliseconds(25), () =>
-            //{
-            //    DataStreamingService();
-            //    return true; // True = Repeat again, False = Stop the timer
-            //});
         }
 
         #region Declarations
@@ -195,27 +178,28 @@ namespace FirstBioRobApp.ViewModels
         {
             while (GraphUpdateServiceRunning)
             {
-                if (isNewData)
+                while (!isNewData) { }
+                //if (isNewData)
+                //{
+                isNewData = false;
+                FastLineSeries newSeries = UpdatePlotBuffer();
+                if (newSeries != null)
                 {
-                    isNewData = false;
-                    FastLineSeries newSeries = UpdatePlotBuffer();
-                    if (newSeries != null)
+                    Device.BeginInvokeOnMainThread(() =>
                     {
-                        Device.BeginInvokeOnMainThread(() =>
+                        try
                         {
-                            try
-                            {
-                                SeriesCollection[0] = newSeries;
-                                fps_Counter++;
-                            }
-                            catch 
-                            {
+                            SeriesCollection[0] = newSeries;
+                            fps_Counter++;
+                        }
+                        catch
+                        {
 
-                            } //NullReferenceException VERY OFTEN!!!!!!!!!!!!
-                        });
-                    }
-                    //Mean_Label = $"{Convert.ToString(fps_Counter)} - { stopwatch.Elapsed.TotalMilliseconds.ToString("#0.0000") }";//.ToString("#0.00");
+                        } //NullReferenceException VERY OFTEN!!!!!!!!!!!!
+                    });
                 }
+                //Mean_Label = $"{Convert.ToString(fps_Counter)} - { stopwatch.Elapsed.TotalMilliseconds.ToString("#0.0000") }";//.ToString("#0.00");
+                //}
                 Thread.Sleep(5);
             }
         }
