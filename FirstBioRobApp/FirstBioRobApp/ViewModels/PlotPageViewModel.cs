@@ -139,7 +139,8 @@ namespace FirstBioRobApp.ViewModels
             fps_Counter = 0;
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
-                Mean_Label = $"{ fps_Counter } - { secondsPassed }";//.ToString("#0.00");
+                int fpsNOw = fps_Counter;
+                Device.BeginInvokeOnMainThread(() => { Mean_Label = $"{ fpsNOw } - { secondsPassed }"; });
                 fps_Counter = 0;
 
                 if (!GraphUpdateServiceRunning) //If not updating data, stop updating label
@@ -148,8 +149,6 @@ namespace FirstBioRobApp.ViewModels
                 secondsPassed++;
                 return true; 
             });
-
-            IsSfButton_Enabled = !IsSfButton_Enabled; //Activate button
         }
 
 
@@ -203,9 +202,6 @@ namespace FirstBioRobApp.ViewModels
                 }
                 isNewData = true;
                 Thread.Sleep(25);
-
-                //Mean_Label = $"{ testIncrement }";
-
             }
         }
 
@@ -216,8 +212,6 @@ namespace FirstBioRobApp.ViewModels
             while (GraphUpdateServiceRunning)
             {
                 while (!isNewData) { }
-                //if (isNewData)
-                //{
                 isNewData = false;
                 FastLineSeries newSeries = UpdatePlotBuffer();
                 if (newSeries != null)
@@ -235,8 +229,6 @@ namespace FirstBioRobApp.ViewModels
                         } //NullReferenceException VERY OFTEN!!!!!!!!!!!!
                     });
                 }
-                //Mean_Label = $"{Convert.ToString(fps_Counter)} - { stopwatch.Elapsed.TotalMilliseconds.ToString("#0.0000") }";//.ToString("#0.00");
-                //}
                 Thread.Sleep(5);
             }
         }

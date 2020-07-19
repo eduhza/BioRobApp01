@@ -19,7 +19,9 @@
             <chart:SfChart x:Name="SfChart1"
                            VerticalOptions="FillAndExpand"
                            HorizontalOptions="FillAndExpand"
-                           Series="{Binding SeriesCollection}">
+                           Series="{Binding SeriesCollection}"
+                           BackgroundColor="Transparent"
+                           HeightRequest="100">
 
                 <chart:SfChart.PrimaryAxis>
                     <chart:NumericalAxis x:Name="primaryAxis" 
@@ -35,8 +37,61 @@
                 </chart:SfChart.SecondaryAxis>
             </chart:SfChart>
 
+            <BoxView HeightRequest="1" BackgroundColor="#213347" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Period:"
+                       FontSize="Title"
+                       Grid.Column="0"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+                
+                <Slider Maximum="5000" 
+                        Minimum="1000" 
+                        x:Name="nSampleSlider"
+                        Value="{Binding NSampleSliderValue}" 
+                        Grid.Column="1"
+                        MaximumTrackColor="Black"
+                        MinimumTrackColor="White"
+                        ThumbColor="Black"/>
+
+                <Entry Text="{Binding Source={x:Reference nSampleSlider}, Path=Value}"
+                       Grid.Column="2"
+                       FontAttributes="Bold"
+                       Keyboard="Numeric" />
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Weight:"
+                       FontSize="Title"
+                       Grid.Column="0"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+                
+                <Label x:Name="MeanLabel" 
+                       Text="{Binding Mean_Label}" 
+                       Grid.Column="1"
+                       FontSize="Title" 
+                       HorizontalTextAlignment="Center" />
+            </Grid>
+
+
+            <BoxView HeightRequest="1" BackgroundColor="#213347" />
+            
             <buttons:SfButton x:Name="ChangeData_SfButton" 
-                              HeightRequest="80"
+                              HeightRequest="60"
                               CornerRadius="20" WidthRequest="10"
                               Command="{Binding ChangeData_Clicked}" 
                               IsEnabled="{Binding IsSfButton_Enabled}"
@@ -68,16 +123,9 @@
                     </StackLayout>
                 </buttons:SfButton.Content>
             </buttons:SfButton>
+            
 
-            <Slider Maximum="5000" 
-                    Minimum="1000" 
-                    x:Name="nSampleSlider"
-                    Value="{Binding NSampleSliderValue}"/>
 
-            <Label x:Name="MeanLabel" 
-                   Text="{Binding Mean_Label}" 
-                   FontSize="Header" 
-                   HorizontalTextAlignment="Center" />
 
         </StackLayout>
         

@@ -65,9 +65,6 @@
     <PackageReference Include="Plugin.BLE">
       <Version>2.2.0-pre2</Version>
     </PackageReference>
-    <PackageReference Include="PropertyChanged.Fody">
-      <Version>3.2.8</Version>
-    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
       <Version>18.2.0.44</Version>
     </PackageReference>
@@ -157,7 +154,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadUnhandledDeviceExceptionFirstBioRobAppAndroidHideInfoBar="True" XamarinHotReloadDebuggerTimeoutExceptionFirstBioRobAppAndroidHideInfoBar="True" />
+      <UserProperties XamarinHotReloadDebuggerTimeoutExceptionFirstBioRobAppAndroidHideInfoBar="True" XamarinHotReloadUnhandledDeviceExceptionFirstBioRobAppAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
