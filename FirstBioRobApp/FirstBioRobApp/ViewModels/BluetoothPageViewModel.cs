@@ -9,6 +9,7 @@ namespace FirstBioRobApp.ViewModels
         public BluetoothPageViewModel()
         {
             Title = "Bluetooth Zone";
+            var state = Mvx.Resolve<Plugin.BLE.Abstractions.Contracts.IBluetoothLE>();
         }
     }
 }
