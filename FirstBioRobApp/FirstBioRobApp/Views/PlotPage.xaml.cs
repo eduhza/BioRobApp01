@@ -20,11 +20,8 @@ namespace FirstBioRobApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PlotPage : ContentPage
     {
-        private bool _loadedData = false;
         public PlotPage()
         {
-            ViewModels.PlotPageViewModel viewModel = new PlotPageViewModel();
-            BindingContext = viewModel;// this;
             InitializeComponent();
         } 
     }

@@ -12,6 +12,11 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              >
 
+
+    <ContentPage.BindingContext>
+        <viewmodel:PlotPageViewModel/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
 
         <StackLayout Spacing="10" BackgroundColor="#EEEEEE" Padding="5,10" >
