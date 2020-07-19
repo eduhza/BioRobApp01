@@ -23,14 +23,15 @@
 
                 <chart:SfChart.PrimaryAxis>
                     <chart:NumericalAxis x:Name="primaryAxis" 
-                                     ShowMajorGridLines="False" 
-                                     ShowTrackballInfo="False"/>
+                                         ShowMajorGridLines="False" 
+                                         ShowTrackballInfo="False"
+                                         IsVisible="False"/>
                 </chart:SfChart.PrimaryAxis>
 
                 <chart:SfChart.SecondaryAxis>
                     <chart:NumericalAxis x:Name="secondaryAxis" 
-                                     ShowMajorGridLines="False" 
-                                     ShowTrackballInfo="False"/>
+                                         ShowMajorGridLines="False" 
+                                         ShowTrackballInfo="False"/>
                 </chart:SfChart.SecondaryAxis>
             </chart:SfChart>
 
@@ -67,7 +68,12 @@
                     </StackLayout>
                 </buttons:SfButton.Content>
             </buttons:SfButton>
-            
+
+            <Slider Maximum="5000" 
+                    Minimum="1000" 
+                    x:Name="nSampleSlider"
+                    Value="{Binding NSampleSliderValue}"/>
+
             <Label x:Name="MeanLabel" 
                    Text="{Binding Mean_Label}" 
                    FontSize="Header" 

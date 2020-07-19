@@ -8,5 +8,9 @@ namespace FirstBioRobApp.Models
     {
         public string XData { get; set; }
         public int YData { get; set; }
+
     }
+
+
+
 }

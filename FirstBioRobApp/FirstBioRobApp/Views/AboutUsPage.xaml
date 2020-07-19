@@ -17,7 +17,7 @@
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Padding="20,0">
             <Label Text="A BioRob®" FontSize="Title" FontAttributes="Bold"/>
 
-            <Label Text="é uma empresa criada para o desenvolvimento de tecnologias voltadas ao ser humano." Margin="10,0"  />
+            <Label Text="É uma empresa criada para o desenvolvimento de tecnologias voltadas ao ser humano." Margin="10,0"  />
 
             <Label Text=""/>
 
