@@ -52,7 +52,7 @@
 
 	<!--Description of the Bluetooth request message (required on iOS 10, deprecated)-->
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>YOUR CUSTOM MESSAGE</string>
+	<string>This App need acess to Bluetooth</string>
 
 	<!--Description of the Bluetooth request message (required on iOS 13)-->
 	<key>NSBluetoothAlwaysUsageDescription</key>

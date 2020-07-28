@@ -21,6 +21,8 @@
 
         <StackLayout Spacing="10" BackgroundColor="#EEEEEE" Padding="5,10" >
 
+            <ActivityIndicator IsRunning="{Binding IsLoading}" />
+
             <chart:SfChart x:Name="SfChart1"
                            VerticalOptions="FillAndExpand"
                            HorizontalOptions="FillAndExpand"

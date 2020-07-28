@@ -12,12 +12,61 @@
         <viewmodel:BluetoothPageViewModel/>
     </ContentPage.BindingContext>
     
-    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="This is where we connect to our Bluetooth Device!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="5,10">
+
+            <Button x:Name="Scan_Devices_Button"
+                    Text="{Binding Scan_Devices_Button_Text}"
+                    BackgroundColor="{Binding Scan_Devices_Button_BgColor}"
+                    Command="{Binding SearchNew_Button_Clicked}"/>
+            
+            <ListView x:Name="DevicesList"
+                      ItemsSource="{Binding BluetoothDevices}"
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                      IsPullToRefreshEnabled="True">
+                
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0"
+                                           Text="{Binding device.Device.NativeDevice.Name}"
+                                           TextColor="Red"/>
+                                    <Label Grid.Column="1"
+                                           Text="{Binding device.Device.NativeDevice.Address, StringFormat='ID: {0}'}"/>
+                                </Grid>
+                                
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0"
+                                           Text="{Binding device.Rssi, StringFormat='Power: {0:F2}dbm'}"/> 
+                                    <Label Grid.Column="1"
+                                           Text="{Binding distance, StringFormat='Distance: {0:F2}m'}"/>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+
+                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+            <Label Text="{Binding CenterLabel}"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="Connect_Button"
+                    Text="Connect to selected device"
+                    Command="{Binding Connect_Button_Clicked}"
+                    IsEnabled="{Binding Can_Connect}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

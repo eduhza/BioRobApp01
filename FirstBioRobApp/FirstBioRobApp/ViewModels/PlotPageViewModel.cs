@@ -19,22 +19,25 @@ namespace FirstBioRobApp.ViewModels
         //Initialization
         public PlotPageViewModel()
         {
-            CircularBuffer = new ObservableCollection<PlotPageModel>();
+            IsLoading = true;
             Title = "Graph Zone";
             Mean_Label = 0.ToString("#0.00");
             ChangeData_Clicked = new Command(LiveData_Button_Clicked);
             ChangeData_SfLabel = "Turn on Live Data";
+            SfButtonBackgroundColor = "#213347";
             IsSfButton_Enabled = true;
             LoadedData = false;
-            SeriesCollection = new ChartSeriesCollection();
             NSampleSliderValue = 1000;
-            PopulateData();
             GraphUpdateServiceRunning = false;
-            SfButtonBackgroundColor = "#213347";
+
+            SeriesCollection = new ChartSeriesCollection();
+            CircularBuffer = new ObservableCollection<PlotPageModel>();
+            PopulateData();
 
             DataStreaming_thread = new Thread(new ThreadStart(DataStreamingService));
             DataStreaming_thread.Priority = ThreadPriority.Highest;
             DataStreaming_thread.Start();
+            IsLoading = false;
         }
 
         #region Declarations
@@ -51,6 +54,7 @@ namespace FirstBioRobApp.ViewModels
         private bool _graphUpdateServiceRunning;
         private ChartSeriesCollection _seriesCollection;
         private int _nSampleSliderValue;
+        private bool _isLoading;
 
         //Public variables/Commands
         public Random rnd = new Random();
@@ -107,6 +111,11 @@ namespace FirstBioRobApp.ViewModels
             get { return _seriesCollection; }
             set { SetProperty(ref _seriesCollection, value); }
         }
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set { SetProperty(ref _isLoading, value); }
+        }
         public ICommand ChangeData_Clicked { get; private set; }
 
         #endregion
@@ -140,7 +149,10 @@ namespace FirstBioRobApp.ViewModels
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
                 int fpsNOw = fps_Counter;
-                Device.BeginInvokeOnMainThread(() => { Mean_Label = $"{ fpsNOw } - { secondsPassed }"; });
+                Device.BeginInvokeOnMainThread(() => 
+                { 
+                    Mean_Label = $"{ fpsNOw } - { secondsPassed }"; 
+                });
                 fps_Counter = 0;
 
                 if (!GraphUpdateServiceRunning) //If not updating data, stop updating label
@@ -223,10 +235,10 @@ namespace FirstBioRobApp.ViewModels
                             SeriesCollection[0] = newSeries;
                             fps_Counter++;
                         }
-                        catch
+                        catch //(Exception e)
                         {
-
-                        } //NullReferenceException VERY OFTEN!!!!!!!!!!!!
+                            //Exception a = e; //NullReferenceException often on Android.
+                        } 
                     });
                 }
                 Thread.Sleep(5);

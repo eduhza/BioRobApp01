@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.ObjectModel;
 
 namespace FirstBioRobApp.Views
 {
@@ -14,7 +15,8 @@ namespace FirstBioRobApp.Views
     {
         public BluetoothPage()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+
         }
     }
 }
